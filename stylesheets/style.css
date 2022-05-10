@@ -71,6 +71,7 @@ p{
     border:1px solid black;
     font-size:12pt;
     position:absolute;
+    right:-10rem;
     z-index:1;
     padding:1rem;
     width:max-content;
