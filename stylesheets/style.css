@@ -1,0 +1,124 @@
+body{
+    background-color:#F7F6F5;
+    text-align:center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2{
+    margin-top:70px;
+}
+
+p{
+    font-size: 1.2rem;
+}
+
+.button{
+    border:1px solid black;
+    font-size:20px;
+    padding:3px;
+    cursor:pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button:hover{
+    font-weight:bold;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+}
+
+.playagain{
+    background-color: #cfb917;
+}
+
+.continue{
+    background-color: #009905;
+}
+
+.demoBox{
+    position:relative;
+    width:fit-content;
+    margin:auto;
+    background-color:wheat;
+    border: 1px solid black;  
+    border-radius: 4px;
+    padding:5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.demotext{
+    position:relative;
+    font-size:10pt;
+    bottom: 0;
+}
+
+.info{
+    position:absolute;
+    right:1rem;
+    top:0px;
+    width:fit-content;
+    font-size:25pt;
+    margin:auto;
+}
+
+.info:hover .tooltip{
+    cursor:default;
+    visibility:visible;
+}
+.tooltip{
+    visibility:hidden;
+    background-color:white;
+    border:1px solid black;
+    font-size:12pt;
+    position:absolute;
+    z-index:1;
+    padding:1rem;
+    width:max-content;
+}
+
+.mapselectorcontainer{
+    width:100%;
+}
+
+.mapselector{
+    background-color:wheat;
+    border: 1px solid black;  
+    border-radius: 4px;
+    width:fit-content;
+    cursor:pointer;
+    padding:5px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#coopInstructions{
+    text-align:left;
+    margin:auto;
+    width:fit-content;
+}
+#demo2img{
+    width: 720px;
+}
+#selector_newyork{
+    float:left;
+    margin-left:1rem;
+}
+#selector_london{
+    float:center;
+    margin: 0 auto;
+}
+#selector_paris{
+    float:right;
+    margin-right:1rem;
+}
+
+#tooltiplink{
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+/* #game2{
+    filter:blur(5px);
+    -webkit-filter: blur(5px);
+    pointer-events:none;
+} */

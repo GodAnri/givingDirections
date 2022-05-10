@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+
+<body>
+    <h1>Giving Directions</h1>
+
+    <h2 id="titlePartOne">Part 1: Vocabulary</h2>
+
+    <div class="textblock">
+        <p>First, practice giving directions with these these drag-and-drop items. <br>
+            Match the text with the pictures.
+        </p>
+    </div>
+    <div class="demoBox" id="game1">
+        <img src="./images/demo.png" style="width:60%">
+        <figcaption class="demotext">Non-interactable Demo</figcaption>
+            <div class="info" id="info1">
+                &#x1F6C8
+                <div class="tooltip" id="tooltip1">You can click a word at the top <br> and drag it to the pictures below. <br> it will stick if the answer is correct.</div>
+            </div>
+            
+    </div>
+
+    <btn class="button playagain" id="playagain1">&#8634play again</btn>
+    <btn class="button continue" id="continue1">continue&#8680</btn>
+
+    <h2 id="demo2">Part 2: Co-Op Game</h2>
+
+    <div class="textblock">
+        <p>This game is for two players, it is based on two devices. One of you is a tourist, and the other is a local.</p>
+    </div>
+
+    <div class="textblock">
+        <p>A tourist and a local meet. The tourist wants to get to a place in the city and the local helps by giving directions. </p>
+    </div>
+   
+
+<h3>Instructions</h3>
+<div class="instructions instructions1">
+
+</div>
+<div class="instructions instructions2">
+
+</div>
+<div class="instructions instructions3">
+
+</div>
+<div class="instructions instructions4">
+
+</div>
+    <p id="coopInstructions">• Choose the same map as your partner. <br>
+    • Choose your role: Local or Tourist. <br>
+    • Choose the same starting point as your partner. <br>
+    • Local: draw a path on the map by selecting intersections to visit. <br>
+    • Tourist: wait for your partner to draw a path. <br>
+    • Local: give your partner instructions where to go <br>
+    • Tourist: follow your partner's instructions by selecting intersections to visit <br>
+    • Finally: Compare your paths and see how you did!</p>
+
+    <div class="demoBox" id="game2">
+        <div class="mapselectorcontainer">
+            <h3>Select your map</h3>
+            <div class="mapselector" id="selector_newyork">
+                <img src="./images/newyork_flag.png">
+                <p>New York <br> easy *</p>
+            </div>
+            
+            <div class="mapselector" id="selector_paris">
+                <img src="./images/paris_flag.png">
+                <p>Paris <br> hard ***</p>
+            </div>
+
+            <div class="mapselector" id="selector_london">
+                <img src="./images/london_flag.png">
+                <p>London <br> medium **</p>
+            </div>
+        </div>
+        <img id="demo2img" src="./images/newyork.png">
+        <figcaption class="demotext">Non-interactable Demo</figcaption>
+            <div class="info" id="info2">&#x1F6C8
+                <div class="tooltip" id="tooltip2">
+                    <p>Unsure about what words to use? <br> Have a look at the examples above.</p>
+                    <p id="tooltiplink">&#8593check examples&#8593</p>
+                </div>
+            </div>   
+    </div>
+
+    <btn class="button playagain" id="playagain2">&#8634start over</btn>
+
+    <script src="./scripts/givingDirections.js"></script>
+</body>
+
+
+</html>
