@@ -92,6 +92,95 @@ p{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.dnd-game{
+    position:relative;
+    width: 900px;
+    margin:auto;
+    padding:10px;
+    background-color: wheat;
+    border: 1px solid black;  
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dnd-choices{
+    display:flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    position:relative;
+    height:150px;
+    width: 500px;
+    border: 1px solid black;
+    border-radius:5px;
+    margin:auto;
+    background-color: rgba(204,255,153,1);;
+}
+
+.dnd-element{
+    border: 1px solid black;  
+    background-color: rgba(204,255,204,1);
+    border-radius: 4px;
+    width: fit-content;
+    max-width:150px;
+    font-size:small;
+    height: 1rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:5px;
+    margin:auto;
+}
+
+.dnd-target-area{
+    position:relative;
+    height:380px;
+    width: 800px;
+    margin:auto;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.dnd-target-container{
+    position:absolute;
+    display:flex;
+    flex-flow: wrap;
+    align-items:center;
+    width: 150px;
+    height: 150px;
+}
+
+.dnd-target{
+    position: relative;
+    float:left;
+    display:flex;
+    align-items:center;
+    border-bottom: 2px solid black;  
+    width: 150px;
+    height: 30px;
+}
+
+.dnd-target-image{
+    position:relative;
+    float:left;
+    border:solid black;
+    width: 150px;
+    height: 100px;
+}
+
+.dnd-feedback{
+    display:none;
+    position:absolute;
+    top:150px;
+    left:200px;
+    width: 500px;
+    margin:auto;
+    padding:10px;
+    background-color: rgb(244, 217, 167);
+    border: 1px solid black;  
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 #coopInstructions{
     text-align:left;
     margin:auto;

@@ -16,6 +16,47 @@
             Match the text with the pictures.
         </p>
     </div>
+
+    <div class="dnd-game">
+
+        <div class="info" id="info1">
+            &#x1F6C8
+            <div class="tooltip" id="tooltip1">You can click a word at the top <br> and drag it to the pictures below. <br> it will stick if the answer is correct.</div>
+        </div>
+
+        <div class="dnd-choices">
+        </div>
+    
+        <div class="dnd-target-area">
+            <div class="dnd-target-container" style="left: 40px; top: 20px;">
+            </div>
+            <div class="dnd-target-container" style="left: 220px; top: 20px;">
+            </div>
+            <div class="dnd-target-container" style="left: 400px; top: 20px;">
+            </div>
+            <div class="dnd-target-container" style="left: 580px; top: 20px;">
+            </div>
+            <div class="dnd-target-container" style="left: 40px; top: 190px;">
+            </div>
+            <div class="dnd-target-container" style="left: 220px; top: 190px;">
+            </div>
+            <div class="dnd-target-container" style="left: 400px; top: 190px;">
+            </div>
+            <div class="dnd-target-container" style="left: 580px; top: 190px;">
+            </div>
+        </div>
+
+        <div class="dnd-button-box">
+            <btn class="button playagain" id="dnd-control-playagain">&#8634play again</btn>
+            <btn class="button btnCheck" id="dnd-control-check">Check</btn>
+            <btn class="button continue" id="dnd-control-continue">continue&#8680</btn>
+        </div>
+
+        <div class="dnd-feedback">
+        </div>
+        
+    </div>
+    
     <div class="demoBox" id="game1">
         <img src="./images/demo.png" style="width:60%">
         <figcaption class="demotext">Non-interactable Demo</figcaption>
@@ -89,7 +130,7 @@
 
     <btn class="button playagain" id="playagain2">&#8634start over</btn>
 
-    <script src="./scripts/givingDirections.js"></script>
+    <script type="module" src="scripts/givingDirections.js"></script>
 </body>
 
 
