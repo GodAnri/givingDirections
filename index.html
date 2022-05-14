@@ -17,57 +17,44 @@
         </p>
     </div>
 
-    <div class="dndGame">
-        <div class="dndChoices" id="dndTest">
-            <div class="dragElement" id="vocab01"></div>
-            <div class="dragElement" id="vocab02"></div>
-            <div class="dragElement" id="vocab03"></div>
-            <div class="dragElement" id="vocab04"></div>
-            <div class="dragElement" id="vocab05"></div>
-            <div class="dragElement" id="vocab06"></div>
-            <div class="dragElement" id="vocab07"></div>
-            <div class="dragElement" id="vocab08"></div>
-            <div class="dragElement" id="vocab09"></div>
-            <div class="dragElement" id="vocab10"></div>
-            <div class="dragElement" id="vocab11"></div>
-            <div class="dragElement" id="vocab12"></div>
+    <div class="dnd-game">
+
+        <div class="info" id="info1">
+            &#x1F6C8
+            <div class="tooltip" id="tooltip1">You can click a word at the top <br> and drag it to the pictures below. <br> it will stick if the answer is correct.</div>
+        </div>
+
+        <div class="dnd-choices">
         </div>
     
-        <div class="dndTargets">
-            <div class="target-container" style="left: 40px; top: 20px;">
-                <div class="dragTargetImage" id="targetImg01">Image 01</div>
-                <div class="dragTarget" id="target01"></div>
+        <div class="dnd-target-area">
+            <div class="dnd-target-container" style="left: 40px; top: 20px;">
             </div>
-            <div class="target-container" style="left: 220px; top: 20px;">
-                <div class="dragTargetImage" id="targetImg02">Image 02</div>
-                <div class="dragTarget" id="target02"></div>
+            <div class="dnd-target-container" style="left: 220px; top: 20px;">
             </div>
-            <div class="target-container" style="left: 400px; top: 20px;">
-                 <div class="dragTargetImage" id="targetImg03">Image 03</div>
-                <div class="dragTarget" id="target03"></div>
+            <div class="dnd-target-container" style="left: 400px; top: 20px;">
             </div>
-            <div class="target-container" style="left: 580px; top: 20px;">
-                <div class="dragTargetImage" id="targetImg04">Image 04</div>
-                <div class="dragTarget" id="target04"></div>
+            <div class="dnd-target-container" style="left: 580px; top: 20px;">
             </div>
-            <div class="target-container" style="left: 40px; top: 190px;">
-                <div class="dragTargetImage" id="targetImg05">Image 05</div>
-                <div class="dragTarget" id="target05"></div>
+            <div class="dnd-target-container" style="left: 40px; top: 190px;">
             </div>
-            <div class="target-container" style="left: 220px; top: 190px;">
-                 <div class="dragTargetImage" id="targetImg06">Image 06</div>
-                <div class="dragTarget" id="target06"></div>
+            <div class="dnd-target-container" style="left: 220px; top: 190px;">
             </div>
-            <div class="target-container" style="left: 400px; top: 190px;">
-                 <div class="dragTargetImage" id="targetImg07">Image 07</div>
-                <div class="dragTarget" id="target07"></div>
+            <div class="dnd-target-container" style="left: 400px; top: 190px;">
             </div>
-            <div class="target-container" style="left: 580px; top: 190px;">
-                <div class="dragTargetImage" id="targetImg08">Image 08</div>
-                <div class="dragTarget" id="target08"></div>
+            <div class="dnd-target-container" style="left: 580px; top: 190px;">
             </div>
-
         </div>
+
+        <div class="dnd-button-box">
+            <btn class="button playagain" id="dnd-control-playagain">&#8634play again</btn>
+            <btn class="button btnCheck" id="dnd-control-check">Check</btn>
+            <btn class="button continue" id="dnd-control-continue">continue&#8680</btn>
+        </div>
+
+        <div class="dnd-feedback">
+        </div>
+        
     </div>
     
     <div class="demoBox" id="game1">
@@ -143,7 +130,7 @@
 
     <btn class="button playagain" id="playagain2">&#8634start over</btn>
 
-    <script src="./scripts/givingDirections.js"></script>
+    <script type="module" src="scripts/givingDirections.js"></script>
 </body>
 
 
