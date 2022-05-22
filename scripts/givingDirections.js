@@ -73,10 +73,11 @@ function setupDnD() {
     targetContainers.forEach(container => {
         let item = dndItems.pop();
 
-        let img = document.createElement('div');
+        let img = document.createElement('img');
         img.classList.add('dnd-target-image');
         img.id='targetImg'+item.id;
         img.textContent = 'Image ' + item.id;
+        img.src="../images/dndimgs/img"+ item.id +".png" 
         img.addEventListener('dragenter', dragEnter);
         img.addEventListener('drop', dragDropImage);
         img.addEventListener('dragover', dragOver);
