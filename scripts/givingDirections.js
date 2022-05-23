@@ -1,5 +1,6 @@
 import {getDndItems} from "./dndItems.js";
 import {getNodes} from "./nodes.js";
+import {getNyPaths} from "./nyPaths.js";
 
 //selecting map creates nodes and changes image of the map
 document.querySelectorAll('.mapselector').forEach(item => {
@@ -40,6 +41,10 @@ document.getElementById("tooltiplink").addEventListener('click', event => {
 //clicking the play again button on game 2 removes all nodes and shows map selector
 document.getElementById("playagain2").addEventListener('click', event => {
     removeNodes();
+    selectedNode = -1;
+    document.querySelectorAll('.path').forEach(element => {
+        element.remove();
+    });
     document.querySelector('.mapselectorcontainer').style.display = 'block';
 })
 
@@ -256,9 +261,23 @@ function removeNodes() {
         element.remove();
     });
 }
+const nyPaths = getNyPaths();
 
 function moveToNeighbour(id) {
     removeNodes();
+    let path;
+
+    console.log(selectedNode);
+    console.log(nyPaths[0].nodes.includes(selectedNode));
+    nyPaths.forEach(item => {
+        if(item.nodes.includes(selectedNode) && item.nodes.includes(id)){
+            path = document.createElementNS('http://www.w3.org/2000/svg',"path");
+            path.classList.add("path");
+            path.setAttributeNS(null,"d",item.d);
+            document.getElementById("paths").appendChild(path);
+        }
+    })
+
     console.log("SelectedNode: " + selectedNode);
     getNodes(selectedCity)[id - 1].neighbours.forEach(neighbour => {
         console.log(neighbour)

@@ -87,6 +87,7 @@ p{
     margin-bottom: 1.5rem;
     margin: 30% 120px 1.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 10;
 }
 
 .mapselector{
@@ -198,6 +199,7 @@ p{
 #game2img{
     width: 720px;
     pointer-events:none;
+    z-index: -1;
 }
 #selector_newyork{
     float:left;
@@ -231,4 +233,19 @@ p{
 #tooltiplink{
     text-decoration:underline;
     cursor:pointer;
+}
+
+#paths{
+    width:720px;
+    height:720px;
+    position:absolute;
+    left: 5px;
+    fill: none;
+    z-index:0;
+}
+
+.path{
+    fill: none;
+    stroke: red;
+    stroke-width:3px;
 }
