@@ -180,7 +180,7 @@ function setupDnD() {
         img.classList.add('dnd-target-image');
         img.id='targetImg'+item.id;
         img.textContent = 'Image ' + item.id;
-        img.src="../images/dndimgs/img"+ item.id +".png" 
+        img.src="./images/dndimgs/img"+ item.id +".png" 
         img.addEventListener('dragenter', dragEnter);
         img.addEventListener('drop', dragDropImage);
         img.addEventListener('dragover', dragOver);
