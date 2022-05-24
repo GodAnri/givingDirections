@@ -77,13 +77,26 @@ p{
     width:max-content;
 }
 
-.mapselectorcontainer{
-    width:100%;
+.menuContainer{
+    background:wheat;
+    position:absolute;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    height:250px;
+    width:60%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding:5px;
+    margin-bottom: 1.5rem;
+    margin: 30% 120px 1.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 10;
 }
 
 .mapselector{
     background-color:wheat;
-    border: 1px solid black;  
+    border: 1px solid black;
     border-radius: 4px;
     width:fit-content;
     cursor:pointer;
@@ -181,13 +194,20 @@ p{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+
 #coopInstructions{
     text-align:left;
     margin:auto;
     width:fit-content;
 }
-#demo2img{
+
+#game2img{
     width: 720px;
+    pointer-events:none;
+    filter:blur(5px);
+    pointer-events:none;
+    z-index: -1;
 }
 #selector_newyork{
     float:left;
@@ -196,8 +216,26 @@ p{
 #selector_london{
     float:center;
     margin: 0 auto;
+    pointer-events: none;
 }
 #selector_paris{
+    float:right;
+    margin-right:1rem;
+    pointer-events: none;
+}
+
+#demo_game2img{
+    width: 720px;
+}
+#demo_selector_newyork{
+    float:left;
+    margin-left:1rem;
+}
+#demo_selector_london{
+    float:center;
+    margin: 0 auto;
+}
+#demo_selector_paris{
     float:right;
     margin-right:1rem;
 }
@@ -207,8 +245,29 @@ p{
     cursor:pointer;
 }
 
-/* #game2{
-    filter:blur(5px);
-    -webkit-filter: blur(5px);
-    pointer-events:none;
-} */
+#menuContainer1{
+    display:block;
+}
+
+#endgameContainer{
+    display: none;
+}
+
+#finishGame2{
+    display: none;
+}
+
+#paths{
+    width:720px;
+    height:720px;
+    position:absolute;
+    left: 5px;
+    fill: none;
+    z-index:0;
+}
+
+.path{
+    fill: none;
+    stroke: red;
+    stroke-width:3px;
+}

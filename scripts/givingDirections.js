@@ -1,12 +1,18 @@
 import {getDndItems} from "./dndItems.js";
+import {getNodes} from "./nodes.js";
+import {getNyPaths} from "./nyPaths.js";
 
+//selecting map creates nodes and changes image of the map
 document.querySelectorAll('.mapselector').forEach(item => {
     item.addEventListener('click', event => {
-        let city = item.id.slice(9);
-        let demoimage = document.getElementById("demo2img");
-        demoimage.src='./images/'+city+'.png';
+        selectedCity = item.id.slice(9);
+        let demoimage = document.getElementById("game2img");
+        demoimage.src='./maps/'+selectedCity+'.png';
+        document.getElementById("menuContainer1").style.display="none";
+        document.getElementById("menuContainer2").style.display="flex";
     })
 })
+
 
 //clicking the continue button on the dnd game moves the viewpoint towards the second game
 document.getElementById("dnd-control-continue").addEventListener('click', event => {
@@ -30,16 +36,109 @@ document.getElementById("tooltiplink").addEventListener('click', event => {
     document.getElementById("titlePartOne").scrollIntoView({behavior: 'smooth'});
 })
 
+document.querySelector('#select_local').addEventListener('click', event => {
+    setRole('local');
+    document.getElementById("menuContainer2").style.display="none";
+    document.getElementById("menuContainer3").style.display="flex";
+})
+
+document.querySelector('#select_tourist').addEventListener('click', event => {
+    setRole('tourist');
+    document.getElementById("menuContainer2").style.display="none";
+    document.getElementById("menuContainer3").style.display="flex";
+})
+
+document.querySelectorAll('.startpoint').forEach(button => {
+    button.addEventListener('click', event => {
+        const id = button.id.slice(10);
+
+        switch(selectedCity){
+            case "newyork":
+                switch(id){
+                    case "1":
+                        selectedNode = "4";
+                        break;
+                    case "2": 
+                        selectedNode = "52";
+                        break;
+                    case "3":
+                        selectedNode = "1";
+                        break;
+                    case "4":
+                        selectedNode = "32";
+                        break;
+                    default:            
+                }
+            default:    
+        }
+
+        document.getElementById("menuContainer3").style.display="none";
+        if(userRole == "tourist"){
+            document.getElementById("menuContainer4").style.display="flex";
+        } else {
+            document.getElementById("menuContainer5").style.display="flex";
+        }
+
+    })
+})
+
+document.querySelectorAll('.startgame').forEach(button => {
+    button.addEventListener('click', event => {
+
+        let node = getNodes(selectedCity)[selectedNode - 1];
+       node.neighbours.forEach(neighbour =>{
+            addNode(neighbour)
+        })
+        document.getElementById("menuContainer5").style.display="none";
+        document.getElementById("menuContainer4").style.display="none";
+
+        let gameImage = document.getElementById("game2img");
+        gameImage.style.filter='none';
+        gameImage.style.pointerEvents = 'all';
+
+        let map = document.getElementById("game2");
+        let info = document.getElementById("info2");
+    
+        let newNode = document.createElement('img');
+        newNode.classList.add("node");
+        newNode.id = 'node' + node.id;
+        newNode.src = './images/selectnode.png';
+        newNode.style.width = '15px';
+        newNode.style.height = '15px';
+        newNode.style.position = 'absolute';
+        newNode.style.top = node.y / 3 + 'px';
+        newNode.style.left = node.x / 3 + 'px';
+        map.insertBefore(newNode, info);
+
+        document.querySelector('#finishGame2').style.display = 'inline';
+    })
+})
+
+document.querySelector('#finishGame2').addEventListener('click', event => {
+    removeNodes();
+    document.querySelector('#endgameContainer').style.display='block';
+})
+
+
+
+//clicking the play again button on game 2 removes all nodes and shows map selector
 document.getElementById("playagain2").addEventListener('click', event => {
-    let game2 = document.getElementById("game2");
-    game2.style="-webkit-filter: blur(0px); pointer-events:all"
+    removeNodes();
+    selectedNode = -1;
+    document.querySelectorAll('.path').forEach(element => {
+        element.remove();
+    });
+    document.querySelector('#menuContainer1').style.display = 'block';
+    let gameImage = document.querySelector("#game2img");
+    gameImage.style.filter='blur(5px)';
+    gameImage.style.pointerEvents = 'none';
+    document.querySelector('#endgameContainer').style.display='none';
 })
 
 setupDnD();
 
 // current drag element
 let selectedId;
-
 
 // initialize the dnd game with a random arrangement of words and a selection of target pictures
 function setupDnD() {
@@ -207,4 +306,72 @@ function shuffleArray(array){
     }
 
     return array;
+}
+
+//current intersection
+let selectedNode = -1;
+
+//current city
+let selectedCity;
+
+let userRole;
+
+// adding a specific node
+function addNode(id) {
+    let map = document.getElementById("game2");
+    let info = document.getElementById("info2");
+
+    let node = getNodes(selectedCity)[id - 1];
+
+    let newNode = document.createElement('img');
+    newNode.classList.add("node");
+    newNode.id = 'node' + node.id;
+    newNode.src = './images/node.png';
+    newNode.addEventListener("mouseover", function(event) {
+        event.target.setAttribute('src', './images/selectnode.png');
+    })
+    newNode.addEventListener("mouseout", function(event) {
+        event.target.setAttribute('src', './images/node.png');
+    })
+    newNode.addEventListener("click", function(event) {
+        moveToNeighbour(event.target.id.slice(4))
+    })
+    newNode.style.width = '15px';
+    newNode.style.height = '15px';
+    newNode.style.position = 'absolute';
+    newNode.style.top = node.y / 3 + 'px';
+    newNode.style.left = node.x / 3 + 'px';
+    map.insertBefore(newNode, info);
+}
+
+//removing nodes
+function removeNodes() {
+    document.querySelectorAll('.node').forEach(element => {
+        element.remove();
+    });
+}
+const nyPaths = getNyPaths();
+
+function moveToNeighbour(id) {
+    removeNodes();
+    let path;
+
+    nyPaths.forEach(item => {
+        if(item.nodes.includes(selectedNode) && item.nodes.includes(id)){
+            path = document.createElementNS('http://www.w3.org/2000/svg',"path");
+            path.classList.add("path");
+            path.setAttributeNS(null,"d",item.d);
+            document.getElementById("paths").appendChild(path);
+        }
+    })
+
+    getNodes(selectedCity)[id - 1].neighbours.forEach(neighbour => {
+        if (neighbour != selectedNode)
+            addNode(neighbour);
+    });
+    selectedNode = id;
+}
+
+function setRole(role){
+    userRole = role;
 }
