@@ -8,13 +8,11 @@ document.querySelectorAll('.mapselector').forEach(item => {
         selectedCity = item.id.slice(9);
         let demoimage = document.getElementById("game2img");
         demoimage.src='./maps/'+selectedCity+'.png';
-        demoimage.style.filter = 'none';
-        getNodes(selectedCity).forEach(item => {
-            addNode(item.id);
-        });
-        document.querySelector('.mapselectorcontainer').style.display = "None";
+        document.getElementById("menuContainer1").style.display="none";
+        document.getElementById("menuContainer2").style.display="flex";
     })
 })
+
 
 //clicking the continue button on the dnd game moves the viewpoint towards the second game
 document.getElementById("dnd-control-continue").addEventListener('click', event => {
@@ -38,6 +36,91 @@ document.getElementById("tooltiplink").addEventListener('click', event => {
     document.getElementById("titlePartOne").scrollIntoView({behavior: 'smooth'});
 })
 
+document.querySelector('#select_local').addEventListener('click', event => {
+    setRole('local');
+    document.getElementById("menuContainer2").style.display="none";
+    document.getElementById("menuContainer3").style.display="flex";
+})
+
+document.querySelector('#select_tourist').addEventListener('click', event => {
+    setRole('tourist');
+    document.getElementById("menuContainer2").style.display="none";
+    document.getElementById("menuContainer3").style.display="flex";
+})
+
+document.querySelectorAll('.startpoint').forEach(button => {
+    button.addEventListener('click', event => {
+        const id = button.id.slice(10);
+
+        switch(selectedCity){
+            case "newyork":
+                switch(id){
+                    case "1":
+                        selectedNode = "4";
+                        break;
+                    case "2": 
+                        selectedNode = "52";
+                        break;
+                    case "3":
+                        selectedNode = "1";
+                        break;
+                    case "4":
+                        selectedNode = "32";
+                        break;
+                    default:            
+                }
+            default:    
+        }
+
+        document.getElementById("menuContainer3").style.display="none";
+        if(userRole == "tourist"){
+            document.getElementById("menuContainer4").style.display="flex";
+        } else {
+            document.getElementById("menuContainer5").style.display="flex";
+        }
+
+    })
+})
+
+document.querySelectorAll('.startgame').forEach(button => {
+    button.addEventListener('click', event => {
+
+        let node = getNodes(selectedCity)[selectedNode - 1];
+       node.neighbours.forEach(neighbour =>{
+            addNode(neighbour)
+        })
+        document.getElementById("menuContainer5").style.display="none";
+        document.getElementById("menuContainer4").style.display="none";
+
+        let gameImage = document.getElementById("game2img");
+        gameImage.style.filter='none';
+        gameImage.style.pointerEvents = 'all';
+
+        let map = document.getElementById("game2");
+        let info = document.getElementById("info2");
+    
+        let newNode = document.createElement('img');
+        newNode.classList.add("node");
+        newNode.id = 'node' + node.id;
+        newNode.src = './images/selectnode.png';
+        newNode.style.width = '15px';
+        newNode.style.height = '15px';
+        newNode.style.position = 'absolute';
+        newNode.style.top = node.y / 3 + 'px';
+        newNode.style.left = node.x / 3 + 'px';
+        map.insertBefore(newNode, info);
+
+        document.querySelector('#finishGame2').style.display = 'inline';
+    })
+})
+
+document.querySelector('#finishGame2').addEventListener('click', event => {
+    removeNodes();
+    document.querySelector('#endgameContainer').style.display='block';
+})
+
+
+
 //clicking the play again button on game 2 removes all nodes and shows map selector
 document.getElementById("playagain2").addEventListener('click', event => {
     removeNodes();
@@ -45,7 +128,11 @@ document.getElementById("playagain2").addEventListener('click', event => {
     document.querySelectorAll('.path').forEach(element => {
         element.remove();
     });
-    document.querySelector('.mapselectorcontainer').style.display = 'block';
+    document.querySelector('#menuContainer1').style.display = 'block';
+    let gameImage = document.querySelector("#game2img");
+    gameImage.style.filter='blur(5px)';
+    gameImage.style.pointerEvents = 'none';
+    document.querySelector('#endgameContainer').style.display='none';
 })
 
 setupDnD();
@@ -227,6 +314,8 @@ let selectedNode = -1;
 //current city
 let selectedCity;
 
+let userRole;
+
 // adding a specific node
 function addNode(id) {
     let map = document.getElementById("game2");
@@ -267,8 +356,6 @@ function moveToNeighbour(id) {
     removeNodes();
     let path;
 
-    console.log(selectedNode);
-    console.log(nyPaths[0].nodes.includes(selectedNode));
     nyPaths.forEach(item => {
         if(item.nodes.includes(selectedNode) && item.nodes.includes(id)){
             path = document.createElementNS('http://www.w3.org/2000/svg',"path");
@@ -278,11 +365,13 @@ function moveToNeighbour(id) {
         }
     })
 
-    console.log("SelectedNode: " + selectedNode);
     getNodes(selectedCity)[id - 1].neighbours.forEach(neighbour => {
-        console.log(neighbour)
         if (neighbour != selectedNode)
             addNode(neighbour);
     });
     selectedNode = id;
+}
+
+function setRole(role){
+    userRole = role;
 }

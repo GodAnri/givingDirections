@@ -77,9 +77,13 @@ p{
     width:max-content;
 }
 
-.mapselectorcontainer{
+.menuContainer{
     background:wheat;
     position:absolute;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    height:250px;
     width:60%;
     border: 1px solid black;
     border-radius: 4px;
@@ -190,6 +194,8 @@ p{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+
 #coopInstructions{
     text-align:left;
     margin:auto;
@@ -198,6 +204,8 @@ p{
 
 #game2img{
     width: 720px;
+    pointer-events:none;
+    filter:blur(5px);
     pointer-events:none;
     z-index: -1;
 }
@@ -208,10 +216,12 @@ p{
 #selector_london{
     float:center;
     margin: 0 auto;
+    pointer-events: none;
 }
 #selector_paris{
     float:right;
     margin-right:1rem;
+    pointer-events: none;
 }
 
 #demo_game2img{
@@ -233,6 +243,18 @@ p{
 #tooltiplink{
     text-decoration:underline;
     cursor:pointer;
+}
+
+#menuContainer1{
+    display:block;
+}
+
+#endgameContainer{
+    display: none;
+}
+
+#finishGame2{
+    display: none;
 }
 
 #paths{
