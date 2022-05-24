@@ -128,11 +128,15 @@ document.getElementById("playagain2").addEventListener('click', event => {
     document.querySelectorAll('.path').forEach(element => {
         element.remove();
     });
+    document.querySelectorAll('.menuContainer').forEach(container => {
+        container.style.display = 'none';
+    })
     document.querySelector('#menuContainer1').style.display = 'block';
     let gameImage = document.querySelector("#game2img");
     gameImage.style.filter='blur(5px)';
     gameImage.style.pointerEvents = 'none';
     document.querySelector('#endgameContainer').style.display='none';
+    document.querySelector('#finishGame2').style.display='none';
 })
 
 setupDnD();
