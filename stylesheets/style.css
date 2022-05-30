@@ -217,7 +217,6 @@ p{
 #selector_london{
     float:center;
     margin: 0 auto;
-    pointer-events: none;
 }
 #selector_paris{
     float:right;

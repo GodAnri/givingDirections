@@ -8,6 +8,64 @@ document.querySelectorAll('.mapselector').forEach(item => {
         selectedCity = item.id.slice(9);
         let demoimage = document.getElementById("game2img");
         demoimage.src='./maps/'+selectedCity+'.png';
+
+        document.querySelectorAll('.startpoint').forEach(button => {
+            const id = button.id.slice(10);
+            switch(selectedCity){
+                case 'newyork':
+                    switch(id){
+                        case '1':
+                            button.textContent="Grand Central Station";
+                            break;  
+                        case '2':
+                            button.textContent="MOMA";
+                            break;    
+                        case '3':
+                            button.textContent="Empire State Building";
+                            break;
+                        case '4':
+                            button.textContent="Rockefeller Center";
+                            break;
+                        default:
+                    }
+                    break;
+                case 'london':
+                    switch(id){
+                        case '1':
+                            button.textContent="Hyde Park";
+                            break;  
+                        case '2':
+                            button.textContent="Big Ben";
+                            break;    
+                        case '3':
+                            button.textContent="The British Museum";
+                            break;
+                        case '4':
+                            button.textContent="London Bridge";
+                            break;
+                        default:
+                    }
+                    break;
+                case 'paris':
+                    switch(id){
+                        case '1':
+                            button.textContent="Grand Central Station";
+                            break;  
+                        case '2':
+                            button.textContent="MOMA";
+                            break;    
+                        case '3':
+                            button.textContent="Empire State Building";
+                            break;
+                        case '4':
+                            button.textContent="Rockefeller Center";
+                            break;
+                        default:
+                    }
+                    break;
+                default:
+            }
+        })
         document.getElementById("menuContainer1").style.display="none";
         document.getElementById("menuContainer2").style.display="flex";
     })
@@ -69,6 +127,26 @@ document.querySelectorAll('.startpoint').forEach(button => {
                         break;
                     default:            
                 }
+                break;
+            case "london":
+                switch(id){
+                    case "1":
+                        selectedNode = "4";
+                        break;
+                    case "2": 
+                        selectedNode = "14";
+                        break;
+                    case "3":
+                        selectedNode = "22";
+                        break;
+                    case "4":
+                        selectedNode = "32";
+                        break;
+                    default:            
+                }
+                break;
+            case "paris":
+                
             default:    
         }
 

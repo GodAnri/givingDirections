@@ -347,7 +347,252 @@ export function getNodes(map) {
             ];
         case 'london':
             return [
-
+                {
+                    id: 1,
+                    x: 152,
+                    y: 727,
+                    neighbours: [2,6]
+                },
+                {
+                    id: 2,
+                    x: 260,
+                    y: 835,
+                    neighbours: [1,3,7]
+                },
+                {
+                    id: 3,
+                    x: 355,
+                    y: 920,
+                    neighbours: [2,4,8,9]
+                },
+                {
+                    id: 4,
+                    x: 107,
+                    y: 970,
+                    neighbours: [3,5]
+                },
+                {
+                    id: 5,
+                    x: 162,
+                    y: 1435,
+                    neighbours: [4,9]
+                },
+                {
+                    id: 6,
+                    x: 394,
+                    y: 658,
+                    neighbours: [1,7,18]
+                },
+                {
+                    id: 7,
+                    x: 432,
+                    y: 796,
+                    neighbours: [2,6,8,16]
+                },
+                {
+                    id: 8,
+                    x: 459,
+                    y: 906,
+                    neighbours: [3,7,11]
+                },
+                {
+                    id: 9,
+                    x: 494,
+                    y: 1237,
+                    neighbours: [3,5,10,12,24]
+                },
+                {
+                    id: 10,
+                    x: 590,
+                    y: 1383,
+                    neighbours: [9,13,15]
+                },
+                {
+                    id: 11,
+                    x: 690,
+                    y: 880,
+                    neighbours: [8,12,17]
+                },
+                {
+                    id: 12,
+                    x: 824,
+                    y: 1030,
+                    neighbours: [9,11,17]
+                },
+                {
+                    id: 13,
+                    x: 1021,
+                    y: 1308,
+                    neighbours: [10,14,25,26]
+                },
+                {
+                    id: 14,
+                    x: 1001,
+                    y: 1500,
+                    neighbours: [13,15,27]
+                },
+                {
+                    id: 15,
+                    x: 929,
+                    y: 1685,
+                    neighbours: [10,14,29]
+                },
+                {
+                    id: 16,
+                    x: 864,
+                    y: 636,
+                    neighbours: [7,17,20]
+                },
+                {
+                    id: 17,
+                    x: 982,
+                    y: 828,
+                    neighbours: [11,12,16,22]
+                },
+                {
+                    id: 18,
+                    x: 1071,
+                    y: 390,
+                    neighbours: [6,19,38]
+                },
+                {
+                    id: 19,
+                    x: 1120,
+                    y: 459,
+                    neighbours: [18,20,39]
+                },
+                {
+                    id: 20,
+                    x: 1133,
+                    y: 500,
+                    neighbours: [16,19,21]
+                },
+                {
+                    id: 21,
+                    x: 1275,
+                    y: 778,
+                    neighbours: [20,22,39]
+                },
+                {
+                    id: 22,
+                    x: 1110,
+                    y: 807,
+                    neighbours: [17,21,23]
+                },
+                {
+                    id: 23,
+                    x: 1147,
+                    y: 925,
+                    neighbours: [22,24,40]
+                },
+                {
+                    id: 24,
+                    x: 1113,
+                    y: 985,
+                    neighbours: [9,23,25]
+                },
+                {
+                    id: 25,
+                    x: 1144,
+                    y: 1033,
+                    neighbours: [13,24,26,41]
+                },
+                {
+                    id: 26,
+                    x: 1298,
+                    y: 1257,
+                    neighbours: [13,25,27]
+                },
+                {
+                    id: 27,
+                    x: 1397,
+                    y: 1376,
+                    neighbours: [14,26,28,41]
+                },
+                {
+                    id: 28,
+                    x: 1478,
+                    y: 1476,
+                    neighbours: [27,29,30]
+                },
+                {
+                    id: 29,
+                    x: 1412,
+                    y: 1616,
+                    neighbours: [15,28]
+                },
+                {
+                    id: 30,
+                    x: 1770,
+                    y: 1508,
+                    neighbours: [28,31,32]
+                },
+                {
+                    id: 31,
+                    x: 1992,
+                    y: 1070,
+                    neighbours: [30,32,35,36]
+                },
+                {
+                    id: 32,
+                    x: 1740,
+                    y: 1028,
+                    neighbours: [30,31,33,41]
+                },
+                {
+                    id: 33,
+                    x: 1770,
+                    y: 970,
+                    neighbours: [32,34,35,37]
+                },
+                {
+                    id: 34,
+                    x: 1711,
+                    y: 946,
+                    neighbours: [33,38,39]
+                },
+                {
+                    id: 35,
+                    x: 1990,
+                    y: 890,
+                    neighbours: [31,33,36]
+                },
+                {
+                    id: 36,
+                    x: 2025,
+                    y: 868,
+                    neighbours: [31,35,37]
+                },
+                {
+                    id: 37,
+                    x: 1922,
+                    y: 638,
+                    neighbours: [33,36,38]
+                },
+                {
+                    id: 38,
+                    x: 1726,
+                    y: 524,
+                    neighbours: [18,34,37]
+                },
+                {
+                    id: 39,
+                    x: 1394,
+                    y: 808,
+                    neighbours: [20,21,34,40]
+                },
+                {
+                    id: 40,
+                    x: 1405,
+                    y: 905,
+                    neighbours: [23,39,41]
+                },
+                {
+                    id: 41,
+                    x: 1415,
+                    y: 987,
+                    neighbours: [25,27,32,40]
+                }
             ];
         case 'paris':
             return [
