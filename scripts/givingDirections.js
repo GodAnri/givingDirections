@@ -1,6 +1,6 @@
 import {getDndItems} from "./dndItems.js";
 import {getNodes} from "./nodes.js";
-import {getNyPaths} from "./nyPaths.js";
+import {getPaths} from "./paths.js";
 
 //selecting map creates nodes and changes image of the map
 document.querySelectorAll('.mapselector').forEach(item => {
@@ -319,6 +319,7 @@ let selectedNode = -1;
 //current city
 let selectedCity;
 
+//user selected role
 let userRole;
 
 // adding a specific node
@@ -355,13 +356,12 @@ function removeNodes() {
         element.remove();
     });
 }
-const nyPaths = getNyPaths();
 
 function moveToNeighbour(id) {
     removeNodes();
     let path;
 
-    nyPaths.forEach(item => {
+    getPaths(selectedCity).forEach(item => {
         if(item.nodes.includes(selectedNode) && item.nodes.includes(id)){
             path = document.createElementNS('http://www.w3.org/2000/svg',"path");
             path.classList.add("path");
