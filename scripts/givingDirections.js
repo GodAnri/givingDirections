@@ -49,16 +49,16 @@ document.querySelectorAll('.mapselector').forEach(item => {
                 case 'paris':
                     switch(id){
                         case '1':
-                            button.textContent="Grand Central Station";
+                            button.textContent="Eiffel Tower";
                             break;  
                         case '2':
-                            button.textContent="MOMA";
+                            button.textContent="Arc de Triomphe";
                             break;    
                         case '3':
-                            button.textContent="Empire State Building";
+                            button.textContent="Pantheon";
                             break;
                         case '4':
-                            button.textContent="Rockefeller Center";
+                            button.textContent="Palais Garnier";
                             break;
                         default:
                     }
@@ -146,7 +146,22 @@ document.querySelectorAll('.startpoint').forEach(button => {
                 }
                 break;
             case "paris":
-                
+                switch(id){
+                    case "1":
+                        selectedNode = "9";
+                        break;
+                    case "2": 
+                        selectedNode = "5";
+                        break;
+                    case "3":
+                        selectedNode = "65";
+                        break;
+                    case "4":
+                        selectedNode = "52";
+                        break;
+                    default:            
+                }
+                break;
             default:    
         }
 

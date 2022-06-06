@@ -221,7 +221,6 @@ p{
 #selector_paris{
     float:right;
     margin-right:1rem;
-    pointer-events: none;
 }
 
 #demo_game2img{
