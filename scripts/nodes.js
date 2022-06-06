@@ -750,7 +750,7 @@ export function getNodes(map) {
                     id: 26,
                     x: 635,
                     y: 1877,
-                    neighbours: [25,27]
+                    neighbours: [25,27,32]
                 },                 
                 {
                     id: 27,
@@ -786,7 +786,7 @@ export function getNodes(map) {
                     id: 32,
                     x: 1065,
                     y: 1935,
-                    neighbours: [26,31,34]
+                    neighbours: [26,31,33,34]
                 },                 
                 {
                     id: 33,
@@ -1001,7 +1001,7 @@ export function getNodes(map) {
                 {
                     id: 68,
                     x: 1845,
-                    y: 1896,
+                    y: 1696,
                     neighbours: [62,64,67,69]
                 },   
                 {
