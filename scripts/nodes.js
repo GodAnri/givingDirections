@@ -519,13 +519,13 @@ export function getNodes(map) {
                     id: 29,
                     x: 1412,
                     y: 1616,
-                    neighbours: [15,28]
+                    neighbours: [15,28,30]
                 },
                 {
                     id: 30,
                     x: 1770,
                     y: 1508,
-                    neighbours: [28,31,32]
+                    neighbours: [28,29,31,32]
                 },
                 {
                     id: 31,
