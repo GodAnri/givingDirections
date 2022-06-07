@@ -2,6 +2,8 @@ import {getDndItems} from "./dndItems.js";
 import {getNodes} from "./nodes.js";
 import {getPaths} from "./paths.js";
 
+let moveStack = []
+
 //selecting map creates nodes and changes image of the map
 document.querySelectorAll('.mapselector').forEach(item => {
     item.addEventListener('click', event => {
@@ -173,9 +175,9 @@ document.querySelectorAll('.startpoint').forEach(button => {
 
 document.querySelectorAll('.startgame').forEach(button => {
     button.addEventListener('click', event => {
-
+        moveStack = []
         let node = getNodes(selectedCity)[selectedNode - 1];
-       node.neighbours.forEach(neighbour =>{
+        node.neighbours.forEach(neighbour =>{
             addNode(neighbour)
         })
         document.getElementById("menuContainer5").style.display="none";
@@ -201,6 +203,25 @@ document.querySelectorAll('.startgame').forEach(button => {
 
         document.querySelector('#finishGame2').style.display = 'inline';
     })
+})
+
+document.querySelector('#undo2').addEventListener('click', event => {
+    if (moveStack.length === 0)
+        return;
+    
+    removeNodes();
+
+    let last = moveStack.pop();
+    let paths = document.getElementById("paths");
+
+    paths.removeChild(paths.lastChild);
+
+    getNodes(selectedCity)[last - 1].neighbours.forEach(neighbour => {
+        if (!moveStack.includes(neighbour.toString()))
+            addNode(neighbour);
+    });
+
+    selectedNode = last;
 })
 
 document.querySelector('#finishGame2').addEventListener('click', event => {
@@ -436,10 +457,13 @@ function moveToNeighbour(id) {
         }
     })
 
+    moveStack.push(selectedNode);
+
     getNodes(selectedCity)[id - 1].neighbours.forEach(neighbour => {
-        if (neighbour != selectedNode)
+        if (!moveStack.includes(neighbour.toString()))
             addNode(neighbour);
     });
+
     selectedNode = id;
 }
 
