@@ -2,7 +2,8 @@ import {getDndItems} from "./dndItems.js";
 import {getNodes} from "./nodes.js";
 import {getPaths} from "./paths.js";
 
-let moveStack = []
+let moveStack = [];
+let finished = false;
 
 //selecting map creates nodes and changes image of the map
 document.querySelectorAll('.mapselector').forEach(item => {
@@ -175,7 +176,8 @@ document.querySelectorAll('.startpoint').forEach(button => {
 
 document.querySelectorAll('.startgame').forEach(button => {
     button.addEventListener('click', event => {
-        moveStack = []
+        finished = false;
+        moveStack = [];
         let node = getNodes(selectedCity)[selectedNode - 1];
         node.neighbours.forEach(neighbour =>{
             addNode(neighbour)
@@ -206,7 +208,7 @@ document.querySelectorAll('.startgame').forEach(button => {
 })
 
 document.querySelector('#undo2').addEventListener('click', event => {
-    if (moveStack.length === 0)
+    if (moveStack.length === 0 || finished)
         return;
     
     removeNodes();
@@ -225,6 +227,7 @@ document.querySelector('#undo2').addEventListener('click', event => {
 })
 
 document.querySelector('#finishGame2').addEventListener('click', event => {
+    finished = true;
     removeNodes();
     document.querySelector('#endgameContainer').style.display='block';
 })
