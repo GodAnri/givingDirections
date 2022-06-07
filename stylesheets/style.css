@@ -60,9 +60,15 @@ p{
     position:absolute;
     right:1rem;
     top:0px;
-    width:fit-content;
-    font-size:25pt;
+    width:1.6rem;
+    height: 1.6rem;
+    font-size:18pt;
     margin:auto;
+    margin-top: 3px;
+    cursor:default;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 50px;
 }
 
 .info:hover .tooltip{
@@ -96,6 +102,11 @@ p{
     margin: 30% 120px 1.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 10;
+}
+
+.instruction {
+    white-space: pre;
+    position: relative;
 }
 
 .mapselector{
@@ -147,6 +158,28 @@ p{
     padding:7px;
     margin:auto;
 }
+
+.bounce {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+}
+
+@keyframes bounce {
+    from {transform: translateY(0);}
+    to {transform: translateY(-200px);}
+}
+
+.bounce-far {
+    animation-name: bounce-far;
+    animation-duration: 0.5s;
+}
+
+@keyframes bounce-far {
+    from {transform: translateY(0);}
+    to {transform: translateY(-400px);}
+}
+
+
 
 .dnd-target-area{
     position:relative;

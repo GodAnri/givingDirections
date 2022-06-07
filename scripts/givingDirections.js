@@ -168,10 +168,23 @@ document.querySelectorAll('.startpoint').forEach(button => {
         if(userRole == "tourist"){
             document.getElementById("menuContainer4").style.display="flex";
         } else {
-            document.getElementById("menuContainer5").style.display="flex";
+            document.getElementById("menuContainer6").style.display="flex";
         }
 
     })
+})
+
+document.querySelector('#killMenu4').addEventListener('click', e => {
+    document.querySelector('#menuContainer4').style.display = "none";
+    document.querySelector('#menuContainer5').style.display = "flex";
+})
+
+document.querySelector('#killMenu7').addEventListener('click', e => {
+    document.querySelector('#menuContainer7').style.display = "none";
+})
+
+document.querySelector('#killMenu8').addEventListener('click', e => {
+    document.querySelector('#menuContainer8').style.display = "none";
 })
 
 document.querySelectorAll('.startgame').forEach(button => {
@@ -183,7 +196,7 @@ document.querySelectorAll('.startgame').forEach(button => {
             addNode(neighbour)
         })
         document.getElementById("menuContainer5").style.display="none";
-        document.getElementById("menuContainer4").style.display="none";
+        document.getElementById("menuContainer6").style.display="none";
 
         let gameImage = document.getElementById("game2img");
         gameImage.style.filter='none';
@@ -229,7 +242,11 @@ document.querySelector('#undo2').addEventListener('click', event => {
 document.querySelector('#finishGame2').addEventListener('click', event => {
     finished = true;
     removeNodes();
-    document.querySelector('#endgameContainer').style.display='block';
+    if(userRole === "tourist"){
+        document.querySelector('#menuContainer8').style.display = "flex";
+    } else {
+        document.querySelector('#menuContainer7').style.display = "flex";
+    }
 })
 
 
@@ -332,10 +349,26 @@ function defaultDrop(){
     this.classList.remove('over');
 }
 
-function dragDropTarget(){
+async function dragDropTarget(){
 
+    const ele = document.getElementById(selectedId);
     if(checkForMatch(selectedId, this.id)){
-        this.appendChild(document.getElementById(selectedId));
+        this.appendChild(ele);
+    } else {
+        this.appendChild(ele);
+        if(stripIds(this.parentNode.id) <=4){
+            ele.classList.add("bounce");
+        } else {
+            ele.classList.add("bounce-far");
+        }
+        ele.classList.add("bounce");
+
+        await new Promise(r => setTimeout(r, 400));
+
+        document.querySelector('.dnd-choices').appendChild(ele);
+        ele.classList.remove("bounce");
+        ele.classList.remove("bounce-far");
+
     }
     selectedId = -1;
     this.classList.remove('over'); 
@@ -343,9 +376,26 @@ function dragDropTarget(){
     checkForFinish();
 }
 
-function dragDropImage(){
+async function dragDropImage(){
+
+    const ele = document.getElementById(selectedId);
     if(checkForMatch(selectedId, this.nextSibling.id)){
-        this.nextSibling.appendChild(document.getElementById(selectedId));
+        this.nextSibling.appendChild(ele);
+    } else {
+        this.nextSibling.appendChild(ele);
+        if(stripIds(this.parentNode.id) <=4){
+            ele.classList.add("bounce");
+        } else {
+            ele.classList.add("bounce-far");
+        }
+        ele.classList.add("bounce");
+
+        await new Promise(r => setTimeout(r, 500));
+
+        document.querySelector('.dnd-choices').appendChild(ele);
+        ele.classList.remove("bounce");
+        ele.classList.remove("bounce-far");
+
     }
     selectedId = -1;
     this.classList.remove('over');

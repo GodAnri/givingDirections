@@ -22,29 +22,29 @@
     <div class="dnd-game">
 
         <div class="info" id="info1">
-            &#x1F6C8
-            <div class="tooltip" id="tooltip1">You can click a word at the top <br> and drag it to the pictures below. <br> Click 'Check' to see if you are correct.</div>
+            ?
+            <div class="tooltip" id="tooltip1">You can click a word at the top <br> and drag it to the pictures below. <br> It will stick if it is correct.</div>
         </div>
 
         <div class="dnd-choices">
         </div>
     
         <div class="dnd-target-area">
-            <div class="dnd-target-container" style="left: 40px; top: 20px;">
+            <div class="dnd-target-container" id="target-container-01" style="left: 40px; top: 20px;">
             </div>
-            <div class="dnd-target-container" style="left: 220px; top: 20px;">
+            <div class="dnd-target-container" id="target-container-02" style="left: 220px; top: 20px;">
             </div>
-            <div class="dnd-target-container" style="left: 400px; top: 20px;">
+            <div class="dnd-target-container" id="target-container-03" style="left: 400px; top: 20px;">
             </div>
-            <div class="dnd-target-container" style="left: 580px; top: 20px;">
+            <div class="dnd-target-container" id="target-container-04" style="left: 580px; top: 20px;">
             </div>
-            <div class="dnd-target-container" style="left: 40px; top: 190px;">
+            <div class="dnd-target-container" id="target-container-05" style="left: 40px; top: 190px;">
             </div>
-            <div class="dnd-target-container" style="left: 220px; top: 190px;">
+            <div class="dnd-target-container" id="target-container-06" style="left: 220px; top: 190px;">
             </div>
-            <div class="dnd-target-container" style="left: 400px; top: 190px;">
+            <div class="dnd-target-container" id="target-container-07" style="left: 400px; top: 190px;">
             </div>
-            <div class="dnd-target-container" style="left: 580px; top: 190px;">
+            <div class="dnd-target-container" id="target-container-08" style="left: 580px; top: 190px;">
             </div>
         </div>
 
@@ -106,26 +106,46 @@
 
         <div class="menuContainer" id="menuContainer4">
             <div>
-                <h3>What place do you want to find? Tell your partner</h3>
-                <h3>Then follow the local's instructions by selecting intersections to visit</h3>
-                <button class="button startgame" id="startGameTourist">Start</button>
+                <h3>What place do you want to find?<br> Tell your partner.<br> <br>Wait for your partner to finish drawing.</h3>
+                <button class="button" id="killMenu4">ok</button>
             </div>
-
         </div>
 
         <div class="menuContainer" id="menuContainer5">
             <div>
-                <h3>Select the intersections on the map to draw a path to the place that the tourist wants to find</h3>
-                <h3>Then give the tourist instructions where to go</h3>
+                <h3>Ok. Now follow your partner's<br>directions by clicking the intersections.<br><br>Click the save button below the map<br>when you are done.</h3>
+                <button class="button startgame" id="startGameTourist">Start</button>
+            </div>
+        </div>
+
+        <div class="menuContainer" id="menuContainer6">
+            <div>
+                <h3 class="instruction">Now select the intersections on the map to<br>draw a path to the place that<br>the tourist wants to find. <br><br>Click the save button below the map<br> when you are done.</h3>
                 <button class="button startgame" id="startGameLocal">Start</button>
             </div>
         </div>
+
+        <div class="menuContainer" id="menuContainer7">
+            <div>
+                <h3 class="instruction">Great! <br> Now explain the way to your partner.</h3>
+                <button class="button" id="killMenu7">ok</button>
+            </div>
+        </div>
+
+        <div class="menuContainer" id="menuContainer8">
+            <div>
+                <h3 class="instruction">Well Done! <br> Now compare your paths<br> and see how well you did.</h3>
+                <button class="button" id="killMenu8">ok</button>
+            </div>
+        </div>
+
+
 
 
         <img id="game2img" src="./maps/newyork.png">
         <svg id="paths">
         </svg>
-        <div class="info" id="info2">&#x1F6C8
+        <div class="info" id="info2">?
             <div class="tooltip" id="tooltip2">
                 <p>Unsure about what words to use? <br> Have a look at the examples above.</p>
                 <p id="tooltiplink">&#8593check examples&#8593</p>
@@ -134,13 +154,13 @@
     </div>
 
     <div id="endgameContainer"> 
-        <h3>Well Done</h3>
-        <h3>Now compare your paths and see how you did!</h3>
+        <h3>Well Done! <br> Now compare your paths and see how you did!</h3>
+
     </div>
 
-    <btn class="button playagain" id="playagain2">&#8634Start over</btn>
     <btn class="button undo" id="undo2">&#8678Undo</btn>
-    <btn class="button finish" id="finishGame2">&#8680Finish</btn>
+    <btn class="button finish" id="finishGame2">Save</btn>
+    <btn class="button playagain" id="playagain2">&#8634Start over</btn>
 
         <script type="module" src="scripts/givingDirections.js"></script>
 </body>
