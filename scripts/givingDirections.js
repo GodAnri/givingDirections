@@ -86,10 +86,6 @@ document.getElementById("dnd-control-playagain").addEventListener('click', event
     setupDnD();
 }) 
 
-//clicking the check button on the dnd game checks for the validity of the solution
-document.getElementById("dnd-control-check").addEventListener('click', checkDndSolution);
-
-
 document.getElementById("tooltiplink").addEventListener('click', event => {
     document.getElementById("titlePartOne").scrollIntoView({behavior: 'smooth'});
 })
@@ -291,63 +287,6 @@ function setupDnD() {
     })
 }
 
-// check whether all lables are with the correct pictures
-function checkDndSolution(){
-    const targetAreas = document.querySelectorAll('.dnd-target');
-    let falseAnswers = [];
-    const choiceBox = document.querySelector('.dnd-choices');
-    
-    targetAreas.forEach(target => {
-        let selection;
-        target.hasChildNodes ? selection = target.firstChild : selection = undefined;
-        
-        if(selection != undefined){
-            if(!checkForMatch(selection, target)){
-                falseAnswers.push(selection)
-            }
-        } else {
-            falseAnswers.push(selection);
-        }
-    })
-
-    if(falseAnswers.length === 0){
-        const feedback = document.querySelector('.dnd-feedback');
-        feedback.innerHTML = '';
-        let feedbackText = document.createElement('p');
-        feedbackText.textContent = "Well done! Everything is correct!";
-        let feedbackBtn = document.createElement('button');
-        feedbackBtn.classList.add("dnd-feedback-remove");
-        feedbackBtn.textContent = "x";
-        feedbackBtn.addEventListener('click', event => {
-            feedback.style = 'display:none'
-        });
-        feedback.appendChild(feedbackText);
-        feedback.appendChild(feedbackBtn);
-    } else {
-        falseAnswers.forEach(answer => {
-            if(answer != undefined){
-                choiceBox.appendChild(answer);
-            }
-        })
-
-        const feedback = document.querySelector('.dnd-feedback');
-        feedback.innerHTML = '';
-        let feedbackText = document.createElement('p');
-        feedbackText.textContent = "Oh no! It seems like you have made some mistakes You can try again";
-        let feedbackBtn = document.createElement('button');
-        feedbackBtn.classList.add("dnd-feedback-remove");
-        feedbackBtn.textContent = "x";
-        feedbackBtn.addEventListener('click', event => {
-            feedback.style = 'display:none'
-        });
-        feedback.appendChild(feedbackText);
-        feedback.appendChild(feedbackBtn);
-    }
-
-    document.querySelector('.dnd-feedback').style="display: block;";
-}
-
-
 function dragStart(){
     selectedId = this.id;
 }
@@ -370,20 +309,54 @@ function defaultDrop(){
 }
 
 function dragDropTarget(){
-    this.appendChild(document.getElementById(selectedId));
+
+    if(checkForMatch(selectedId, this.id)){
+        this.appendChild(document.getElementById(selectedId));
+    }
+    selectedId = -1;
     this.classList.remove('over'); 
+
+    checkForFinish();
 }
 
 function dragDropImage(){
-    this.nextSibling.appendChild(document.getElementById(selectedId));
+    if(checkForMatch(selectedId, this.nextSibling.id)){
+        this.nextSibling.appendChild(document.getElementById(selectedId));
+    }
+    selectedId = -1;
     this.classList.remove('over');
+    checkForFinish();
 }
 
 function checkForMatch(selected, dropTarget){
-
-    const stripSelect = stripIds(selected.id);
-    const stripTarget = stripIds(dropTarget.id);
+    const stripSelect = stripIds(selected);
+    const stripTarget = stripIds(dropTarget);
     return stripSelect === stripTarget ? true : false;
+}
+
+function checkForFinish(){
+    let emptyAnswers = [];
+    document.querySelectorAll('.dnd-target').forEach(target => {
+        if(!target.hasChildNodes()){
+            emptyAnswers.push(target.id);
+        }
+    });
+    if(emptyAnswers.length === 0){
+        const feedback = document.querySelector('.dnd-feedback');
+        feedback.innerHTML = '';
+        let feedbackText = document.createElement('p');
+        feedbackText.textContent = "Well Done! \r\n You have matched the labels to the correct images.";
+        feedbackText.style = "white-space: pre;";
+        let feedbackBtn = document.createElement('button');
+        feedbackBtn.classList.add("dnd-feedback-remove");
+        feedbackBtn.textContent = "x";
+        feedbackBtn.addEventListener('click', event => {
+            feedback.style = 'display:none'
+        });
+        feedback.appendChild(feedbackText);
+        feedback.appendChild(feedbackBtn);
+        feedback.style = 'display: block';
+    }
 }
 
 function stripIds(id){
