@@ -33,6 +33,10 @@ p{
     background-color: #009905;
 }
 
+.finish{
+    background-color: #009905;
+}
+
 .demoBox{
     position:relative;
     width:fit-content;
