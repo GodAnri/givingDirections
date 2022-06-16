@@ -600,7 +600,7 @@ export function getNodes(map) {
                     id: 1,
                     x: 99,
                     y: 362,
-                    neighbours: [2,5]
+                    neighbours: [2,4,5]
                 },
                 {
                     id: 2,
